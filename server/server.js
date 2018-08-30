@@ -16,6 +16,16 @@ io.on('connection', (socket) => {
         console.log('Client disconnected...', reason);
     });
 
+    socket.emit('newMessage', {
+        from: "elliott@jeb.com",
+        text: "This is my instant message, coming from the server",
+        createdAt: new Date()
+    });
+
+    socket.on('createMessage', (message) => {
+        console.log(message);
+    });
+
     console.log('New User Connected...');
 });
 
