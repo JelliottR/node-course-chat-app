@@ -27,8 +27,9 @@ io.on('connection', (socket) => {
         callback();
     });
 
-    socket.on('createLocationMessage', (coords) => {
+    socket.on('createLocationMessage', (coords, callback) => {
         io.emit('newLocationMessage', generateLocationMessage("Admin", coords.latitude, coords.longitude))
+        callback();
     });
 
     console.log('New User Connected...');
